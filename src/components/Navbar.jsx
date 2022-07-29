@@ -32,7 +32,6 @@ const Navbar = () => {
     activeMenu,
     setActiveMenu,
     isClicked,
-    setIsClicked,
     handleClick,
     screenSize,
     setScreenSize,
@@ -57,11 +56,13 @@ const Navbar = () => {
     }
   }, [screenSize]);
 
+  const handleActiveMenu = () => setActiveMenu(!activeMenu);
+
   return (
     <div className="flex justify-between p-2 md:mx-6 relative">
       <NavButton
         title="Menu"
-        customFunc={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)}
+        customFunc={handleActiveMenu}
         color={currentColor}
         icon={<AiOutlineMenu />}
       />
@@ -92,7 +93,11 @@ const Navbar = () => {
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-ls"
             onClick={() => handleClick("userProfile")}
           >
-            <img src={avatar} alt="" className="rounded-full w-8 h-8" />
+            <img
+              src={avatar}
+              alt="user-profile"
+              className="rounded-full w-8 h-8"
+            />
             <p>
               <span className="text-gray-400 text-14">Hi, </span>{" "}
               <span className="text-gray-400 font-bold ml-1 text-14">
